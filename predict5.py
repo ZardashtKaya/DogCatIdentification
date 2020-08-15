@@ -8,6 +8,7 @@ import cv2
 from tqdm import tqdm
 import sys
 IMG_SIZE = 50
+IMG_SIZE = sys.argv[2]
 # testing_image = "./test.jpg"
 
 testing_image = sys.argv[1]
