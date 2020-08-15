@@ -4,6 +4,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
+import numpy as np
 
 import pickle
 
@@ -12,6 +13,7 @@ X = pickle.load(pickle_in)
 
 pickle_in = open("y.pickle", "rb")
 y = pickle.load(pickle_in)
+y=np.array(y)
 print(X)
 X = X/255.0
 
