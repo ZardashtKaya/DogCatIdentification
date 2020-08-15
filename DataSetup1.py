@@ -4,9 +4,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import cv2
+import sys
 from tqdm import tqdm
 DATADIR = "./Data/training"
 IMG_SIZE = 50
+IMG_SIZE = sys.argv[1]
 
 CATEGORIES = ["dogs", "cats"]
 
