@@ -5,6 +5,7 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout, Activation, Flatten
 from tensorflow.keras.layers import Conv2D, MaxPooling2D
 import numpy as np
+import datetime
 
 import pickle
 
@@ -14,10 +15,10 @@ X = pickle.load(pickle_in)
 pickle_in = open("y.pickle", "rb")
 y = pickle.load(pickle_in)
 y=np.array(y)
-print(X)
 X = X/255.0
 
-print(X)
+
+
 
 model = Sequential()
 
@@ -39,7 +40,9 @@ model.add(Activation('sigmoid'))
 model.compile(loss='binary_crossentropy',
               optimizer='adam',
               metrics=['accuracy'])
+log_dir = "logs/fit/" + datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
 
-model.fit(X, y, batch_size=32, epochs=3, validation_split=0.1)
+model.fit(X, y, batch_size=32, epochs=100, validation_split=0.1,callbacks=[tensorboard_callback])
 
 model.save('dogCatIden.model')

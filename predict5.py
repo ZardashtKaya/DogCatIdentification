@@ -8,7 +8,7 @@ import cv2
 from tqdm import tqdm
 import sys
 IMG_SIZE = 50
-IMG_SIZE = sys.argv[2]
+IMG_SIZE = int(sys.argv[2])
 # testing_image = "./test.jpg"
 
 testing_image = sys.argv[1]
@@ -30,7 +30,9 @@ testing_data = np.array(testing_data).reshape(-1, IMG_SIZE, IMG_SIZE, 1)
 
 print(testing_data)
 print("Loading Model...")
-new_model = tf.keras.models.load_model('dogCatIden.model')
+# model_name ='dogCatIden'+str(IMG_SIZE)+'.model'
+model_name ='dogCatIden.model'
+new_model = tf.keras.models.load_model(model_name)
 
 
 testing_data = testing_data/255.0
